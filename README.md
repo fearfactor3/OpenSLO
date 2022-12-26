@@ -1,4 +1,11 @@
-# ![ OpenSLO ][logo]
+#
+
+<!-- markdownlint-disable MD033-->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/openslo_light.png">
+  <img alt="OpenSLO light theme" src="images/openslo.png">
+</picture>
+<!-- markdownlint-enable MD033-->
 
 ## Table of Contents
 
@@ -26,6 +33,9 @@
     - [AlertNotificationTarget](#alertnotificationtarget)
       - [Notes (AlertNotificationTarget)](#notes-alertnotificationtarget)
     - [Service](#service)
+- [Examples](examples/README.md)
+- Work in progress for future versions
+  - [v2alpha1](enhancements/v2alpha1.md)
 
 ## Introduction
 
@@ -80,7 +90,7 @@ spec:
 
 - **kind** *string* - required, one of: [DataSource](#datasource), [SLO](#slo),
   [SLI](#sli), [AlertPolicy](#alertpolicy), [AlertCondition](#alertcondition),
-  [AlertNotificationTarget](#alertnotificationtarget)
+  [AlertNotificationTarget](#alertnotificationtarget), [Service](#service)
 - **metadata.name:** *string* - required field
   - all implementations must at least support object names that follow [RFC1123][rfc1123-names]:
     - are up to 63 characters in length
@@ -141,6 +151,8 @@ prescriptive stance on this issue.
 
 A DataSource represents connection details with a particular metric source.
 
+> [Check work in progress for v2.](enhancements/v2alpha1.md#datasource)
+
 ```yaml
 apiVersion: openslo/v1
 kind: DataSource
@@ -153,7 +165,6 @@ spec:
   connectionDetails:
     # fields used for creating a connection with particular datasource e.g. AccessKeys, SecretKeys, etc.
     # everything that is valid YAML can be put here
-
 ```
 
 ##### Notes (DataSource)
@@ -186,6 +197,8 @@ spec:
 
 A service level objective (SLO) is a target value or a range of values for
 a service level that is described by a service level indicator (SLI).
+
+> [Check work in progress for v2.](enhancements/v2alpha1.md#slo)
 
 ```yaml
 apiVersion: openslo/v1
@@ -302,6 +315,8 @@ Either `target` or `targetPercent` must be used.
 #### SLI
 
 A service level indicator (SLI) represents how to read metrics from data sources.
+
+> [Check work in progress for v2.](enhancements/v2alpha1.md#sli)
 
 ```yaml
 apiVersion: openslo/v1
@@ -448,7 +463,7 @@ indicatorValue = ( total - bad ) / total
 ```
 
 If we have 1 error out of a total of 100 requests, the calculated value for
-the indicator would be: `(100 - 1 )  = 0.99`. This represents 99% on a 0-100 scale
+the indicator would be: `(100 - 1) = 0.99`. This represents 99% on a 0-100 scale
 using the formula `0.99 * 100 = 99`.
 
 > 💡 **Note:** As you can see for both query combinations we end up with the same calculated
@@ -746,5 +761,4 @@ spec:
   description: string # optional up to 1050 characters
 ```
 
-[logo]: images/openslo.png
 [rfc1123-names]: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
