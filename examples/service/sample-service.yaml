@@ -1,0 +1,7 @@
+apiVersion: openslo/v1
+kind: Service
+metadata:
+  name: string
+  displayName: string # optional
+spec:
+  description: string # optional up to 1050 characters

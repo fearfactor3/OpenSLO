@@ -1,0 +1,11 @@
+apiVersion: openslo/v1
+kind: DataSource
+metadata:
+  name: string
+  displayName: string # optional
+spec:
+  description: string # optional up to 1050 characters
+  type: string # predefined type e.g. Prometheus, Datadog, etc.
+  connectionDetails:
+    # fields used for creating a connection with particular datasource e.g. AccessKeys, SecretKeys, etc.
+    # everything that is valid YAML can be put here

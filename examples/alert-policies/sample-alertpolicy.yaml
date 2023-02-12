@@ -1,0 +1,14 @@
+apiVersion: openslo/v1
+kind: AlertPolicy
+metadata:
+  name: string
+  displayName: string # optional
+spec:
+  description: string # optional up to 1050 characters
+  alertWhenNoData: boolean
+  alertWhenResolved: boolean
+  alertWhenBreaching: boolean
+  conditions: # list of alert conditions
+    - conditionRef: # required when alert condition is not inlined
+  notificationTargets:
+  - targetRef: # required when alert notification target is not inlined
