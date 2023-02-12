@@ -1,7 +1,7 @@
 apiVersion: openslo/v1
 kind: Service
 metadata:
-  name: string
-  displayName: string # optional
+  name: payment-service
+  displayName: Payment Processing Service # Payment Processing Service text that will show on the UI for your service on your platform.
 spec:
-  description: string # optional up to 1050 characters
+  description: Payment Processing Service # The description of your services that was created.
